@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-for-payments
+      author: Argen
+      changes:
+        - createTable:
+            tableName: payments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: booking_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_payment_booking_id
+                    references: bookings(id)
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: "PENDING"
+              - column:
+                  name: payment_type
+                  type: varchar(20)
+                  defaultValue: "INSTANT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payment_provider
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payment_details
+                  type: jsonb
+              - column:
+                  name: version
+                  type: bigint
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+              - column:
+                  name: created_by
+                  type: varchar(50)
+              - column:
+                  name: updated_by
+                  type: varchar(50)

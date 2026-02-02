@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/booking_system
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/master.yaml
+    enabled: true
+
+  graphql:
+    graphiql:
+      enabled: true
+
+  jpa:
+    properties:
+      hibernate:
+        type:
+          json_format_mapper: org.hibernate.type.format.jackson.JacksonJsonFormatMapper
+
+server:
+  port: 8080
+
+
+logging:
+  level:
+    liquibase: INFO

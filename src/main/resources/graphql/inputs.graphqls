@@ -1,0 +1,31 @@
+input CreateBookingInput {
+    resourceId: ID!
+    startTime: DateTime!
+    endTime: DateTime!
+    paymentInput: CreatePaymentInput!
+    paymentType: PaymentType!
+}
+
+input CreatePaymentInput {
+    paymentProvider: PaymentProvider!
+    paymentDetails: JSON
+}
+
+input CreateResourceInput {
+    amount: BigDecimal
+    isActive: Boolean
+    name: String
+    description: String
+}
+
+input SetIsActiveInput {
+    id: ID!
+    isActive: Boolean
+}
+
+input UpdateResourceInput {
+    id: ID!
+    name: String!
+    description: String!
+    amount: BigDecimal!
+}

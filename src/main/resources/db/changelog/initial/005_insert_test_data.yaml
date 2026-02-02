@@ -1,0 +1,90 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-test-users
+      author: Argen
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: username, value: "admin"}
+              - column: {name: full_name, value: "Главный Администратор"}
+              - column: {name: password, value: "$2a$10$exftkgKGK16cEzzafNQ4IOOKs62OqUX/rgdB9QlfELUFVg3jYSfKy"}
+              - column: {name: role, value: "ADMIN"}
+              - column: {name: enabled, value: true}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "SYSTEM"}
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: username, value: "user"}
+              - column: {name: full_name, value: "Иван Иванов"}
+              - column: {name: password, value: "$2a$10$exftkgKGK16cEzzafNQ4IOOKs62OqUX/rgdB9QlfELUFVg3jYSfKy"}
+              - column: {name: role, value: "USER"}
+              - column: {name: enabled, value: true}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "SYSTEM"}
+
+  - changeSet:
+      id: insert-test-resources
+      author: Argen
+      changes:
+        - insert:
+            tableName: resources
+            columns:
+              - column: {name: name, value: "Переговорка 'Альфа'"}
+              - column: {name: description, value: "Большая комната с проектором и доской"}
+              - column: {name: is_active, value: true}
+              - column: {name: is_deleted, value: false}
+              - column: {name: amount, value: 500.00}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "admin"}
+        - insert:
+            tableName: resources
+            columns:
+              - column: {name: name, value: "Tesla Model 3"}
+              - column: {name: description, value: "Белый электромобиль для деловых поездок"}
+              - column: {name: is_active, value: true}
+              - column: {name: is_deleted, value: false}
+              - column: {name: amount, value: 2000.00}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "admin"}
+        - insert:
+            tableName: resources
+            columns:
+              - column: {name: name, value: "Ноутбук MacBook Pro"}
+              - column: {name: description, value: "Мощный ноутбук для презентаций (В ремонте)"}
+              - column: {name: is_active, value: false}
+              - column: {name: is_deleted, value: false}
+              - column: {name: amount, value: 300.00}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "admin"}
+
+  - changeSet:
+      id: insert-test-bookings
+      author: Argen
+      changes:
+        - insert:
+            tableName: bookings
+            columns:
+              - column: {name: resource_id, valueNumeric: 1}
+              - column: {name: user_id, valueNumeric: 2}
+              - column: {name: start_time, valueDate: "2026-02-10T10:00:00"}
+              - column: {name: end_time, valueDate: "2026-02-10T12:00:00"}
+              - column: {name: status, value: "CONFIRMED"}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "user"}
+
+  - changeSet:
+      id: insert-test-payments
+      author: Argen
+      changes:
+        - insert:
+            tableName: payments
+            columns:
+              - column: {name: booking_id, valueNumeric: 1}
+              - column: {name: status, value: "SUCCESS"}
+              - column: {name: payment_type, value: "INSTANT"}
+              - column: {name: payment_provider, value: "CARD"}
+              - column: {name: payment_details, value: '{"cardNumber": "**** 4444", "bank": "Optima"}'}
+              - column: {name: created_at, valueDate: "now()"}
+              - column: {name: created_by, value: "user"}

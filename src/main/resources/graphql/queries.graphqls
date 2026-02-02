@@ -1,0 +1,5 @@
+type Query {
+    resources: [Resource!]!
+    myBookings: [Booking!]!
+    myPayments: [Payment!]!
+}

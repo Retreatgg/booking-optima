@@ -1,0 +1,9 @@
+type Mutation {
+    createBooking(input: CreateBookingInput!): Booking!
+    createResource(input: CreateResourceInput!): Resource!
+    cancelBooking(id: ID!): Booking!
+    deleteResource(id: ID!): Resource!
+    setIsActiveResource(input: SetIsActiveInput!): Resource!
+    updateResource(input: UpdateResourceInput!): Resource!
+    payForBooking(bookingId: ID!, input: CreatePaymentInput!): Booking!
+}

@@ -1,0 +1,42 @@
+scalar DateTime
+scalar BigDecimal
+scalar JSON
+
+enum Role { ADMIN, USER }
+enum BookingStatus { PENDING, CONFIRMED, CANCELLED }
+enum PaymentStatus { PENDING, SUCCESS, FAILED }
+enum PaymentType { INSTANT, DELAYED }
+enum PaymentProvider { OPTIMA, CARD, PAYPAL }
+
+type User {
+    id: ID!
+    username: String!
+    fullName: String!
+    role: Role!
+}
+
+type Resource {
+    id: ID!
+    name: String!
+    description: String!
+    isActive: Boolean!
+    amount: BigDecimal
+}
+
+type Booking {
+    id: ID!
+    resource: Resource!
+    user: User!
+    startTime: DateTime!
+    endTime: DateTime!
+    status: BookingStatus!
+}
+
+type Payment {
+    id: ID!
+    booking: Booking!
+    paymentType: PaymentType!
+    paymentStatus: PaymentStatus!
+    paymentProvider: PaymentProvider!
+    paymentDetails: JSON
+}
